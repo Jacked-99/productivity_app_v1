@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TaskTableComponent } from './components/task.table/task.table.component';
+import { TaksTableColumnComponent } from './components/taks-table-column/taks-table-column.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TaskTableComponent],
+  imports: [RouterOutlet, TaksTableColumnComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
