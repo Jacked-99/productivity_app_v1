@@ -1,8 +1,17 @@
 <mat-card class="task-table">
-  <p></p>
-  <mat-list color="accent">
+  <mat-accordion>
     @for (item of [1,2,3,5]; track $index) {
-    <mat-list-item>{{ item }}</mat-list-item>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> This is the expansion title </mat-panel-title>
+        <mat-panel-description>
+          This is a summary of the content
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      {{ item }}
+    </mat-expansion-panel>
+
     }
-  </mat-list>
+  </mat-accordion>
 </mat-card>
