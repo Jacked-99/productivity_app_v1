@@ -3,12 +3,13 @@
     @for (item of [1,2,3,5]; track $index) {
 
     <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title> This is the expansion title </mat-panel-title>
-        <mat-panel-description>
-          This is a summary of the content
-        </mat-panel-description>
+      <mat-expansion-panel-header class="task-header">
+        <mat-panel-title>
+          <mat-checkbox color="primary"></mat-checkbox>This is the expansion
+          title
+        </mat-panel-title>
       </mat-expansion-panel-header>
+
       {{ item }}
     </mat-expansion-panel>
 
