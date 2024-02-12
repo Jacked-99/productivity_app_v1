@@ -1,6 +1,8 @@
-<p>task.table works!</p>
-<mat-list>
-  @for (item of [1,2,3,5]; track $index) {
-  <mat-list-item>{{ item }}</mat-list-item>
-  }
-</mat-list>
+<mat-card>
+  <p></p>
+  <mat-list color="accent">
+    @for (item of [1,2,3,5]; track $index) {
+    <mat-list-item>{{ item }}</mat-list-item>
+    }
+  </mat-list>
+</mat-card>
