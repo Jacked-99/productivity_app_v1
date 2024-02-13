@@ -1,5 +1,6 @@
 <mat-card class="task-table">
+  @for (item of tasks; track $index) {
   <app-task-table></app-task-table>
-  <app-task-table></app-task-table>
+  }
   <app-taks-table-button (AddTask)="onAddTaskEmit()"></app-taks-table-button>
 </mat-card>

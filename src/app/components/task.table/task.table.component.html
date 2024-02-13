@@ -1,7 +1,5 @@
 <mat-card class="task-table">
   <mat-accordion multi>
-    @for (item of [1,2,3,5]; track $index) {
-
     <mat-expansion-panel>
       <mat-expansion-panel-header class="task-header">
         <mat-panel-title>
@@ -9,10 +7,6 @@
           title
         </mat-panel-title>
       </mat-expansion-panel-header>
-
-      {{ item }}
     </mat-expansion-panel>
-
-    }
   </mat-accordion>
 </mat-card>
