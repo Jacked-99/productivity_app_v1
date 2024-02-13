@@ -2,5 +2,7 @@
   @for (item of tasks; track $index) {
   <app-task-table [taskData]="item"></app-task-table>
   }
-  <app-taks-table-button (AddTask)="onAddTaskEmit()"></app-taks-table-button>
+  <app-taks-table-button
+    (AddTask)="onAddTaskEmit($event)"
+  ></app-taks-table-button>
 </mat-card>

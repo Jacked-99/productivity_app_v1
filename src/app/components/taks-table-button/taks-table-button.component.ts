@@ -13,21 +13,22 @@ import { take } from 'rxjs';
   styleUrl: './taks-table-button.component.scss',
 })
 export class TaksTableButtonComponent {
-  newTask: Task = { date: new Date(Date.now()), completed: false, title: '' };
-  @Output() AddTask = new EventEmitter();
+  @Output() AddTask = new EventEmitter<Task>();
   constructor(public dialog: MatDialog) {}
   addButtonClick() {
+    let newTask: Task = {
+      date: new Date(Date.now()),
+      completed: false,
+      title: 'a',
+    };
     {
       const dialogRef = this.dialog.open(TaskDialogComponent, {
         data: {},
       });
 
       dialogRef.afterClosed().subscribe((result) => {
-        console.log('The dialog was closed');
-        (this.newTask.date = result.date),
-          (this.newTask.completed = false),
-          (this.newTask.title = result.title);
-        console.log(this.newTask);
+        (newTask.date = result.date), (newTask.title = result.title);
+        this.AddTask.emit(newTask);
       });
     }
   }

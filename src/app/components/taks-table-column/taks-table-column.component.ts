@@ -23,5 +23,7 @@ export class TaksTableColumnComponent {
     { date: new Date(Date.now()), completed: false, title: 'b' },
     { date: new Date(Date.now()), completed: false, title: 'c' },
   ];
-  onAddTaskEmit() {}
+  onAddTaskEmit(task: Task) {
+    this.tasks = [...this.tasks, task];
+  }
 }
