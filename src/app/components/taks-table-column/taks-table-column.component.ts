@@ -10,4 +10,7 @@ import { TaksTableButtonComponent } from '../taks-table-button/taks-table-button
   templateUrl: './taks-table-column.component.html',
   styleUrl: './taks-table-column.component.scss',
 })
-export class TaksTableColumnComponent {}
+export class TaksTableColumnComponent {
+  tasks = [];
+  onAddTaskEmit() {}
+}

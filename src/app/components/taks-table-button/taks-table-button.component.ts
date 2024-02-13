@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 @Component({
@@ -8,4 +8,10 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './taks-table-button.component.html',
   styleUrl: './taks-table-button.component.scss',
 })
-export class TaksTableButtonComponent {}
+export class TaksTableButtonComponent {
+  @Output() AddTask = new EventEmitter();
+
+  addButtonClick() {
+    this.AddTask.emit();
+  }
+}
