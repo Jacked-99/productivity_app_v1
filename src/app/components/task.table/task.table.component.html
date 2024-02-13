@@ -3,10 +3,10 @@
     <mat-expansion-panel>
       <mat-expansion-panel-header class="task-header">
         <mat-panel-title>
-          <mat-checkbox color="primary"></mat-checkbox>This is the expansion
-          title
+          <mat-checkbox color="primary"></mat-checkbox>{{ taskData.title }}
         </mat-panel-title>
       </mat-expansion-panel-header>
+      {{ taskData.date }}
     </mat-expansion-panel>
   </mat-accordion>
 </mat-card>
