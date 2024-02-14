@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -25,8 +25,9 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class TaskTableComponent {
   @Input() taskData!: TaskMain;
+  @Output() taskId = new EventEmitter<string>();
 
   onDeleteClick() {
-    console.log(this.taskData.uid);
+    this.taskId.emit(this.taskData.uid);
   }
 }

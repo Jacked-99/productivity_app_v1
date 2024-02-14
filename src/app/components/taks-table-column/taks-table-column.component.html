@@ -1,7 +1,10 @@
 <mat-card class="task-table">
   <h2 class="task-table-title">Title</h2>
   @for (item of tasks; track $index) {
-  <app-task-table [taskData]="item"></app-task-table>
+  <app-task-table
+    (taskId)="onReciveDelete($event)"
+    [taskData]="item"
+  ></app-task-table>
   }
   <app-taks-table-button
     (AddTask)="onAddTaskEmit($event)"

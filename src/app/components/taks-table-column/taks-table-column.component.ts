@@ -26,4 +26,9 @@ export class TaksTableColumnComponent {
   onAddTaskEmit(task: Task) {
     this.tasks = [...this.tasks, task];
   }
+  onReciveDelete(data: string) {
+    this.tasks = this.tasks.filter((currentTask) => {
+      return currentTask.uid != data;
+    });
+  }
 }
