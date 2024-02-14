@@ -16,19 +16,29 @@ import { TaskMain } from '../../shared/task-main';
 export class TaksTableButtonComponent {
   @Output() AddTask = new EventEmitter<Task>();
   constructor(public dialog: MatDialog) {}
+  dateOptions = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
   addButtonClick() {
     let newTask: TaskMain = {
       date: new Date(Date.now()),
       completed: false,
       title: 'a',
     };
+
     {
       const dialogRef = this.dialog.open(TaskDialogComponent, {
         data: {},
       });
 
       dialogRef.afterClosed().subscribe((result) => {
-        (newTask.date = result.date),
+        (newTask.date = result.date.toLocaleDateString(
+          undefined,
+          this.dateOptions
+        )),
           (newTask.title = result.title),
           (newTask.desc = result.desc);
         this.AddTask.emit(newTask);

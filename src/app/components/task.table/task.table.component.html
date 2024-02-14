@@ -6,7 +6,8 @@
           <mat-checkbox color="primary"></mat-checkbox>{{ taskData.title }}
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <p>{{ taskData.date }}</p>
+      <h3>Date</h3>
+      <p>{{ taskData.date.toString() | titlecase }}</p>
       <mat-divider></mat-divider>
       <h3>Details</h3>
       <p>{{ taskData.desc }}</p>

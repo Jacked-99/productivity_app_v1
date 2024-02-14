@@ -6,6 +6,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Task } from '../../shared/task';
 import { TaskMain } from '../../shared/task-main';
 import { MatDividerModule } from '@angular/material/divider';
+import { TitleCasePipe } from '@angular/common';
 @Component({
   selector: 'app-task-table',
   standalone: true,
@@ -15,6 +16,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatExpansionModule,
     MatCheckboxModule,
     MatDividerModule,
+    TitleCasePipe,
   ],
   templateUrl: './task.table.component.html',
   styleUrl: './task.table.component.scss',
