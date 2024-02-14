@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 import { Task } from '../../shared/task';
 import { take } from 'rxjs';
+import { TaskMain } from '../../shared/task-main';
 @Component({
   selector: 'app-taks-table-button',
   standalone: true,
@@ -16,7 +17,7 @@ export class TaksTableButtonComponent {
   @Output() AddTask = new EventEmitter<Task>();
   constructor(public dialog: MatDialog) {}
   addButtonClick() {
-    let newTask: Task = {
+    let newTask: TaskMain = {
       date: new Date(Date.now()),
       completed: false,
       title: 'a',
@@ -27,7 +28,9 @@ export class TaksTableButtonComponent {
       });
 
       dialogRef.afterClosed().subscribe((result) => {
-        (newTask.date = result.date), (newTask.title = result.title);
+        (newTask.date = result.date),
+          (newTask.title = result.title),
+          (newTask.desc = result.desc);
         this.AddTask.emit(newTask);
       });
     }
