@@ -7,6 +7,7 @@ import { Task } from '../../shared/task';
 import { TaskMain } from '../../shared/task-main';
 import { MatDividerModule } from '@angular/material/divider';
 import { TitleCasePipe } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-task-table',
   standalone: true,
@@ -17,10 +18,15 @@ import { TitleCasePipe } from '@angular/common';
     MatCheckboxModule,
     MatDividerModule,
     TitleCasePipe,
+    MatButtonModule,
   ],
   templateUrl: './task.table.component.html',
   styleUrl: './task.table.component.scss',
 })
 export class TaskTableComponent {
   @Input() taskData!: TaskMain;
+
+  onDeleteClick() {
+    console.log(this.taskData.uid);
+  }
 }

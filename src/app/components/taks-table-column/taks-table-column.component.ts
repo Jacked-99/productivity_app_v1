@@ -19,9 +19,9 @@ import { Task } from '../../shared/task';
 })
 export class TaksTableColumnComponent {
   tasks: Task[] = [
-    { date: new Date(Date.now()), completed: false, title: 'a' },
-    { date: new Date(Date.now()), completed: false, title: 'b' },
-    { date: new Date(Date.now()), completed: false, title: 'c' },
+    { uid: '1', date: new Date(Date.now()), completed: false, title: 'a' },
+    { uid: '2', date: new Date(Date.now()), completed: false, title: 'b' },
+    { uid: '3', date: new Date(Date.now()), completed: false, title: 'c' },
   ];
   onAddTaskEmit(task: Task) {
     this.tasks = [...this.tasks, task];
