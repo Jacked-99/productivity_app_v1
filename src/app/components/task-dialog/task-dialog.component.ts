@@ -14,6 +14,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Inject } from '@angular/core';
 import { TaskMain } from '../../shared/task-main';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-task-dialog',
@@ -27,7 +29,9 @@ import { TaskMain } from '../../shared/task-main';
     MatDialogContent,
     MatDialogActions,
     MatDialogClose,
+    MatDatepickerModule,
   ],
+  providers: [provideNativeDateAdapter()],
   templateUrl: './task-dialog.component.html',
   styleUrl: './task-dialog.component.scss',
 })

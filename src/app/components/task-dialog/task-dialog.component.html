@@ -8,7 +8,9 @@
   <p></p>
   <mat-form-field class="task-dialog-form">
     <mat-label>Date</mat-label>
-    <input type="date" matInput [(ngModel)]="data.date" />
+    <input matInput [matDatepicker]="picker" [(ngModel)]="data.date" />
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
   <p></p>
   <mat-form-field class="task-dialog-form">
