@@ -3,12 +3,13 @@
   <p></p>
   <mat-form-field class="task-dialog-form">
     <mat-label>Task</mat-label>
-    <input matInput [(ngModel)]="data.title" />
+    <input matInput [(ngModel)]="data.title" [formControl]="title" />
   </mat-form-field>
   <p></p>
   <mat-form-field class="task-dialog-form">
     <mat-label>Date</mat-label>
     <input
+      [formControl]="date"
       matInput
       [matDatepicker]="picker"
       [(ngModel)]="data.date"

@@ -9,7 +9,13 @@ import {
   MatDialogClose,
 } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Inject } from '@angular/core';
@@ -37,6 +43,7 @@ import { v4 as uuid } from 'uuid';
     MatDatepickerModule,
     MatIconModule,
     MatListModule,
+    ReactiveFormsModule,
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './task-dialog.component.html',
@@ -49,6 +56,10 @@ export class TaskDialogComponent {
     public dialogRef: MatDialogRef<TaskDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: TaskMain
   ) {}
+
+  title = new FormControl('', Validators.required);
+  date = new FormControl('', Validators.required);
+
   onNoclick() {
     this.dialogRef.close();
   }
