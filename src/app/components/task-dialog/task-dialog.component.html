@@ -25,10 +25,36 @@
       name=""
       id=""
       cols="30"
-      rows="10"
+      rows="5"
       [(ngModel)]="data.desc"
     ></textarea>
   </mat-form-field>
+  <mat-form-field class="task-dialog-form">
+    <mat-label>Add subtask</mat-label>
+    <input matInput type="text" [(ngModel)]="taskTitle" />
+  </mat-form-field>
+  <button
+    type="button"
+    mat-raised-button
+    color="primary"
+    class="task-dialog-form"
+    (click)="addSubtaskClick()"
+  >
+    <mat-icon
+      aria-hidden="false"
+      aria-label="add-task"
+      fontIcon="add"
+    ></mat-icon>
+  </button>
+  @if (subTaskCreate == true) {
+  <h3>Subtasks:</h3>
+  <mat-list role="link">
+    @for (item of data.subTasks; track $index) {
+    <mat-list-item role="listitem">{{ item.title }}</mat-list-item>
+    }
+  </mat-list>
+
+  }
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="onNoclick()">No Thanks</button>
