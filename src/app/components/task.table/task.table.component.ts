@@ -28,11 +28,13 @@ import { FormsModule } from '@angular/forms';
 export class TaskTableComponent {
   @Input() taskData!: TaskMain;
   @Output() taskId = new EventEmitter<string>();
-
+  disableTask = false;
+  openedTask = false;
   onDeleteClick() {
     this.taskId.emit(this.taskData.uid);
   }
   completeAll() {
+    this.disableTask = true;
     this.taskData.subTasks?.forEach((t) => (t.completed = true));
   }
 }
