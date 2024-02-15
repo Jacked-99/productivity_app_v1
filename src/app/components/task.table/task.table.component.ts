@@ -8,6 +8,7 @@ import { TaskMain } from '../../shared/task-main';
 import { MatDividerModule } from '@angular/material/divider';
 import { TitleCasePipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-task-table',
   standalone: true,
@@ -19,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatDividerModule,
     TitleCasePipe,
     MatButtonModule,
+    FormsModule,
   ],
   templateUrl: './task.table.component.html',
   styleUrl: './task.table.component.scss',
@@ -29,5 +31,8 @@ export class TaskTableComponent {
 
   onDeleteClick() {
     this.taskId.emit(this.taskData.uid);
+  }
+  completeAll() {
+    this.taskData.subTasks?.forEach((t) => (t.completed = true));
   }
 }
