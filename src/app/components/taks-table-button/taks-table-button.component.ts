@@ -41,6 +41,7 @@ export class TaksTableButtonComponent {
         )),
           (newTask.title = result.title),
           (newTask.desc = result.desc);
+        newTask.subTasks = result.subTasks;
         this.AddTask.emit(newTask);
       });
     }
