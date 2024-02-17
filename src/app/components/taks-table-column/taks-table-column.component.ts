@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatCard, MatCardModule } from '@angular/material/card';
 import { TaskTableComponent } from '../task.table/task.table.component';
 import { TaksTableButtonComponent } from '../taks-table-button/taks-table-button.component';
@@ -25,6 +25,9 @@ import {
   styleUrl: './taks-table-column.component.scss',
 })
 export class TaksTableColumnComponent {
+  @Input() taskArray!: Task[];
+  @Output() drop = new EventEmitter();
+
   tasks: Task[] = [
     { uid: '1', date: new Date(Date.now()), completed: false, title: 'a' },
     { uid: '2', date: new Date(Date.now()), completed: false, title: 'b' },
@@ -38,21 +41,8 @@ export class TaksTableColumnComponent {
       return currentTask.uid != data;
     });
   }
-  drop(event: CdkDragDrop<string[]>) {
+  onDropElement(event: CdkDragDrop<Task[]>) {
     console.log(event);
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
+    this.drop.emit(event);
   }
 }

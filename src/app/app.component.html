@@ -1,8 +1,10 @@
-<main class="app-main">
-  <app-taks-table-column cdkDropList></app-taks-table-column>
-  <app-taks-table-column cdkDropList></app-taks-table-column>
-  <app-taks-table-column cdkDropList></app-taks-table-column>
-  <app-taks-table-column cdkDropList></app-taks-table-column>
+<main class="app-main" cdkDropListGroup>
+  @for (taskData of tasks; track $index) {
+  <app-taks-table-column
+    [taskArray]="tasks[$index]"
+    (drop)="drop($event)"
+  ></app-taks-table-column>
+  }
 </main>
 
 <router-outlet />
