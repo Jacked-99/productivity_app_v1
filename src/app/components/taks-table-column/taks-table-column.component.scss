@@ -9,4 +9,10 @@
   .task-table-title {
     text-align: center;
   }
+  .task-placeholder {
+    background: #cccccc93;
+    border: dotted 3px #999;
+    min-height: 60px;
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
 }
