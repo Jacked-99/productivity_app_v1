@@ -1,9 +1,12 @@
-<mat-card class="task-table">
+<mat-card class="task-table" cdkDropList [cdkDropListData]="tasks">
   <h2 class="task-table-title">Title</h2>
   @for (item of tasks; track $index) {
   <app-task-table
+    cdkDrag
     (taskId)="onReciveDelete($event)"
     [taskData]="item"
+    [cdkDragData]="item"
+    (cdkDragDropped)="drop($event)"
   ></app-task-table>
   }
   <app-taks-table-button

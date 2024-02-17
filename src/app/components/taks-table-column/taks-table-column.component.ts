@@ -4,6 +4,12 @@ import { TaskTableComponent } from '../task.table/task.table.component';
 import { TaksTableButtonComponent } from '../taks-table-button/taks-table-button.component';
 import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 import { Task } from '../../shared/task';
+import {
+  DragDropModule,
+  moveItemInArray,
+  transferArrayItem,
+  CdkDragDrop,
+} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-taks-table-column',
@@ -13,6 +19,7 @@ import { Task } from '../../shared/task';
     TaskTableComponent,
     TaksTableButtonComponent,
     TaskDialogComponent,
+    DragDropModule,
   ],
   templateUrl: './taks-table-column.component.html',
   styleUrl: './taks-table-column.component.scss',
@@ -30,5 +37,22 @@ export class TaksTableColumnComponent {
     this.tasks = this.tasks.filter((currentTask) => {
       return currentTask.uid != data;
     });
+  }
+  drop(event: CdkDragDrop<string[]>) {
+    console.log(event);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
   }
 }
