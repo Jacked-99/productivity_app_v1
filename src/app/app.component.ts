@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TaskTableComponent } from './components/task.table/task.table.component';
 import { TaksTableColumnComponent } from './components/taks-table-column/taks-table-column.component';
@@ -9,6 +9,8 @@ import {
   CdkDragDrop,
 } from '@angular/cdk/drag-drop';
 import { Task } from './shared/task';
+import { TaskMain } from './shared/task-main';
+import { TasksService } from './shared/tasks.service';
 
 @Component({
   selector: 'app-root',
@@ -17,23 +19,14 @@ import { Task } from './shared/task';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'productivityApp';
-  tasks: Task[][] = [
-    [
-      { uid: '1', date: new Date(Date.now()), completed: false, title: 'a' },
-      { uid: '2', date: new Date(Date.now()), completed: false, title: 'b' },
-      { uid: '3', date: new Date(Date.now()), completed: false, title: 'c' },
-    ],
-    [
-      { uid: '5', date: new Date(Date.now()), completed: false, title: 'a' },
-      { uid: '4', date: new Date(Date.now()), completed: false, title: 'b' },
-      { uid: '6', date: new Date(Date.now()), completed: false, title: 'c' },
-    ],
-  ];
-
+  tasks!: TaskMain[][];
+  constructor(private taskService: TasksService) {}
+  ngOnInit(): void {
+    this.tasks = this.taskService.taskArray;
+  }
   drop(event: CdkDragDrop<Task[]>) {
-    console.log(event);
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,

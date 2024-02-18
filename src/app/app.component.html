@@ -2,6 +2,7 @@
   @for (taskData of tasks; track $index) {
   <app-taks-table-column
     [taskArray]="tasks[$index]"
+    [taskArrayID]="$index"
     (drop)="drop($event)"
   ></app-taks-table-column>
   }

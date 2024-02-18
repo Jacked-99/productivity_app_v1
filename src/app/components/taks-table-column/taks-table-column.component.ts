@@ -4,12 +4,8 @@ import { TaskTableComponent } from '../task.table/task.table.component';
 import { TaksTableButtonComponent } from '../taks-table-button/taks-table-button.component';
 import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 import { Task } from '../../shared/task';
-import {
-  DragDropModule,
-  moveItemInArray,
-  transferArrayItem,
-  CdkDragDrop,
-} from '@angular/cdk/drag-drop';
+import { DragDropModule, CdkDragDrop } from '@angular/cdk/drag-drop';
+import { TasksService } from '../../shared/tasks.service';
 
 @Component({
   selector: 'app-taks-table-column',
@@ -26,23 +22,16 @@ import {
 })
 export class TaksTableColumnComponent {
   @Input() taskArray!: Task[];
+  @Input() taskArrayID!: number;
   @Output() drop = new EventEmitter();
-
-  tasks: Task[] = [
-    { uid: '1', date: new Date(Date.now()), completed: false, title: 'a' },
-    { uid: '2', date: new Date(Date.now()), completed: false, title: 'b' },
-    { uid: '3', date: new Date(Date.now()), completed: false, title: 'c' },
-  ];
+  constructor(private taskService: TasksService) {}
   onAddTaskEmit(task: Task) {
-    this.tasks = [...this.tasks, task];
+    this.taskService.onTaskAdd(task, this.taskArrayID);
   }
   onReciveDelete(data: string) {
-    this.tasks = this.tasks.filter((currentTask) => {
-      return currentTask.uid != data;
-    });
+    this.taskService.onTaskDelete(data, this.taskArrayID);
   }
   onDropElement(event: CdkDragDrop<Task[]>) {
-    console.log(event);
     this.drop.emit(event);
   }
 }

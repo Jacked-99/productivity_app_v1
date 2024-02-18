@@ -9,6 +9,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { TitleCasePipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
+import { TasksService } from '../../shared/tasks.service';
 @Component({
   selector: 'app-task-table',
   standalone: true,
@@ -30,6 +31,7 @@ export class TaskTableComponent {
   @Output() taskId = new EventEmitter<string>();
   disableTask = false;
   openedTask = false;
+
   onDeleteClick() {
     this.taskId.emit(this.taskData.uid);
   }
