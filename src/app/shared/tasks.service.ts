@@ -20,16 +20,20 @@ export class TasksService {
     this.saveTasks();
   }
   onAddTaskArray() {
+    this.taskArray.push([]);
     this.saveTasks();
   }
   saveTasks() {
     localStorage.setItem('tasks', JSON.stringify(this.taskArray));
   }
   loadTask() {
-    this.taskArray = JSON.parse(localStorage.getItem('tasks')!);
+    this.taskArray = JSON.parse(
+      localStorage.getItem('tasks') || JSON.stringify([])
+    );
   }
   onDragTaskEvent(modifiedTaskArray: TaskMain[][]) {
     this.taskArray = modifiedTaskArray;
     this.saveTasks();
   }
+  onTaskModify(taksId: string, arrayID: number) {}
 }

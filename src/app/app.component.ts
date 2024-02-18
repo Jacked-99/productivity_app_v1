@@ -11,11 +11,19 @@ import {
 import { Task } from './shared/task';
 import { TaskMain } from './shared/task-main';
 import { TasksService } from './shared/tasks.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TaksTableColumnComponent, DragDropModule],
+  imports: [
+    RouterOutlet,
+    TaksTableColumnComponent,
+    DragDropModule,
+    MatButtonModule,
+    MatIconModule,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -43,5 +51,8 @@ export class AppComponent implements OnInit {
       );
     }
     this.taskService.onDragTaskEvent(this.tasks);
+  }
+  addButtonClick() {
+    this.taskService.onAddTaskArray();
   }
 }

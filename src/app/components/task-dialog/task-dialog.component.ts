@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {
-  MatDialog,
   MAT_DIALOG_DATA,
   MatDialogRef,
   MatDialogTitle,
@@ -11,7 +10,6 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import {
   FormControl,
-  FormGroup,
   FormsModule,
   ReactiveFormsModule,
   Validators,
@@ -24,7 +22,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { Task } from '../../shared/task';
-import { MatCheckboxModule } from '@angular/material/checkbox';
+
 import { MatListModule } from '@angular/material/list';
 import { v4 as uuid } from 'uuid';
 

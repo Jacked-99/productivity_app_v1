@@ -6,6 +6,19 @@
     (drop)="drop($event)"
   ></app-taks-table-column>
   }
+  <button
+    type="button"
+    mat-raised-button
+    color="primary"
+    class="table-button"
+    (click)="addButtonClick()"
+  >
+    <mat-icon
+      aria-hidden="false"
+      aria-label="add-task"
+      fontIcon="add"
+    ></mat-icon>
+  </button>
 </main>
 
 <router-outlet />
