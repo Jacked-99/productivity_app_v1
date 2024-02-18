@@ -5,24 +5,31 @@ import { TaskMain } from './task-main';
   providedIn: 'root',
 })
 export class TasksService {
-  taskArray: TaskMain[][] = [
-    [
-      { uid: '1', date: new Date(Date.now()), completed: false, title: 'a' },
-      { uid: '2', date: new Date(Date.now()), completed: false, title: 'b' },
-      { uid: '3', date: new Date(Date.now()), completed: false, title: 'c' },
-    ],
-    [
-      { uid: '5', date: new Date(Date.now()), completed: false, title: 'a' },
-      { uid: '4', date: new Date(Date.now()), completed: false, title: 'b' },
-      { uid: '6', date: new Date(Date.now()), completed: false, title: 'c' },
-    ],
-  ];
+  taskArray!: TaskMain[][];
 
   constructor() {}
 
-  onTaskDelete(taksId: string, arrayID: number) {}
-  onTaskAdd(task: TaskMain, arrayID: number) {}
-  onAddTaskArray() {}
-  saveTasks() {}
-  loadTask() {}
+  onTaskDelete(taksId: string, arrayID: number) {
+    this.taskArray[arrayID] = this.taskArray[arrayID].filter(
+      (task) => task.uid != taksId
+    );
+    this.saveTasks();
+  }
+  onTaskAdd(task: TaskMain, arrayID: number) {
+    this.taskArray[arrayID].push(task);
+    this.saveTasks();
+  }
+  onAddTaskArray() {
+    this.saveTasks();
+  }
+  saveTasks() {
+    localStorage.setItem('tasks', JSON.stringify(this.taskArray));
+  }
+  loadTask() {
+    this.taskArray = JSON.parse(localStorage.getItem('tasks')!);
+  }
+  onDragTaskEvent(modifiedTaskArray: TaskMain[][]) {
+    this.taskArray = modifiedTaskArray;
+    this.saveTasks();
+  }
 }

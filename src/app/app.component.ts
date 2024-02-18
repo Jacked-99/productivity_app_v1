@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   tasks!: TaskMain[][];
   constructor(private taskService: TasksService) {}
   ngOnInit(): void {
+    this.taskService.loadTask();
     this.tasks = this.taskService.taskArray;
   }
   drop(event: CdkDragDrop<Task[]>) {
@@ -41,5 +42,6 @@ export class AppComponent implements OnInit {
         event.currentIndex
       );
     }
+    this.taskService.onDragTaskEvent(this.tasks);
   }
 }
