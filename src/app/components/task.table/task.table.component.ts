@@ -27,16 +27,18 @@ import { TasksService } from '../../shared/tasks.service';
   styleUrl: './task.table.component.scss',
 })
 export class TaskTableComponent {
+  @Input() arrayIndex!: number;
   @Input() taskData!: TaskMain;
   @Output() taskId = new EventEmitter<string>();
   disableTask = false;
   openedTask = false;
-
+  constructor(private taskService: TasksService) {}
   onDeleteClick() {
     this.taskId.emit(this.taskData.uid);
   }
   completeAll() {
     this.disableTask = true;
-    this.taskData.subTasks?.forEach((t) => (t.completed = true));
+    // this.taskData.subTasks?.forEach((t) => (t.completed = true));
+    this.taskService.onTaskModify(this.taskData.uid, this.arrayIndex);
   }
 }

@@ -12,6 +12,7 @@
     (taskId)="onReciveDelete($event)"
     [taskData]="item"
     [cdkDragData]="item"
+    [arrayIndex]="taskArrayID"
   >
     <div class="task-placeholder" *cdkDragPlaceholder></div
   ></app-task-table>
