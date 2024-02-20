@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -26,19 +26,25 @@ import { TasksService } from '../../shared/tasks.service';
   templateUrl: './task.table.component.html',
   styleUrl: './task.table.component.scss',
 })
-export class TaskTableComponent {
+export class TaskTableComponent implements OnInit {
   @Input() arrayIndex!: number;
   @Input() taskData!: TaskMain;
   @Output() taskId = new EventEmitter<string>();
   disableTask = false;
   openedTask = false;
   constructor(private taskService: TasksService) {}
+  ngOnInit(): void {
+    this.disableTask = this.taskData.completed;
+  }
   onDeleteClick() {
     this.taskId.emit(this.taskData.uid);
   }
   completeAll() {
-    this.disableTask = true;
-    // this.taskData.subTasks?.forEach((t) => (t.completed = true));
-    this.taskService.onTaskModify(this.taskData.uid, this.arrayIndex);
+    this.disableTask = !this.disableTask;
+    this.taskService.onTaskModify(
+      this.taskData.uid,
+      this.arrayIndex,
+      this.disableTask
+    );
   }
 }

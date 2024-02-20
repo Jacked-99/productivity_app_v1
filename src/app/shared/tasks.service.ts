@@ -35,31 +35,23 @@ export class TasksService {
     this.taskArray = modifiedTaskArray;
     this.saveTasks();
   }
-  onTaskModify(taksId: string, arrayID: number) {
-    //   let newArrr = this.taskArray.map((task) => {
-    //     if (this.taskArray.indexOf(task) == arrayID) {
-    //       return task.map((task) => {
-    //         if (task.uid == taksId) {
-    //           task.completed == true;
-    //           task.subTasks?.forEach((subTsk) => (subTsk.completed = true));
-    //         } else {
-    //           task;
-    //         }
-    //       });
-    //     } else {
-    //       return task;
-    //     }
-    //   });
-    //   console.log(newArrr);
-    let targetArr = this.taskArray[arrayID];
+  onTaskModify(taksId: string, arrayID: number, completed: boolean) {
+    if (completed == true) {
+      this.taskArray[arrayID].forEach((task) => {
+        if (task.uid == taksId) {
+          task.completed = true;
+          task.subTasks?.forEach((t) => (t.completed = true));
+        }
+      });
+    } else {
+      this.taskArray[arrayID].forEach((task) => {
+        if (task.uid == taksId) {
+          task.completed = false;
+          task.subTasks?.forEach((t) => (t.completed = false));
+        }
+      });
+    }
 
-    targetArr.forEach((task) => {
-      if (task.uid == taksId) {
-        task.completed = true;
-        task.subTasks?.forEach((t) => (t.completed = true));
-      }
-    });
-    this.taskArray.splice(arrayID, 1, targetArr);
     this.saveTasks();
   }
 }

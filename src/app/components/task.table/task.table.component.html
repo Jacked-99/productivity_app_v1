@@ -7,7 +7,11 @@
     >
       <mat-expansion-panel-header class="task-header">
         <mat-panel-title>
-          <mat-checkbox color="primary" (change)="completeAll()"></mat-checkbox
+          <mat-checkbox
+            color="primary"
+            [checked]="disableTask"
+            (change)="completeAll()"
+          ></mat-checkbox
           >{{ taskData.title }}
         </mat-panel-title>
       </mat-expansion-panel-header>
