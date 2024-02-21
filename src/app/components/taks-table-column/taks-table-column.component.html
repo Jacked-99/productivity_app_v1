@@ -4,7 +4,11 @@
   [cdkDropListData]="taskArray"
   (cdkDropListDropped)="onDropElement($event)"
 >
-  <h2 class="task-table-title">placeholder</h2>
+  <div>
+    <h2 class="task-table-title">placeholder</h2>
+    <app-task-table-menu></app-task-table-menu>
+  </div>
+
   @for (item of taskArray; track $index) {
 
   <app-task-table

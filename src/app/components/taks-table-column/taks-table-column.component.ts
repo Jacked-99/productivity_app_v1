@@ -6,6 +6,7 @@ import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 import { Task } from '../../shared/task';
 import { DragDropModule, CdkDragDrop } from '@angular/cdk/drag-drop';
 import { TasksService } from '../../shared/tasks.service';
+import { TaskTableMenuComponent } from '../task-table-menu/task-table-menu.component';
 
 @Component({
   selector: 'app-taks-table-column',
@@ -16,6 +17,7 @@ import { TasksService } from '../../shared/tasks.service';
     TaksTableButtonComponent,
     TaskDialogComponent,
     DragDropModule,
+    TaskTableMenuComponent,
   ],
   templateUrl: './taks-table-column.component.html',
   styleUrl: './taks-table-column.component.scss',
