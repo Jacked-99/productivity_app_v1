@@ -36,4 +36,7 @@ export class TaksTableColumnComponent {
   onDropElement(event: CdkDragDrop<Task[]>) {
     this.drop.emit(event);
   }
+  onReciveTableDelete() {
+    this.taskService.onArrayDelete(this.taskArrayID);
+  }
 }

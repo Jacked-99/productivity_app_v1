@@ -6,7 +6,9 @@
 >
   <div class="task-table-head">
     <h2 class="task-table-title">placeholder</h2>
-    <app-task-table-menu></app-task-table-menu>
+    <app-task-table-menu
+      (deleteMenu)="onReciveTableDelete()"
+    ></app-task-table-menu>
   </div>
 
   @for (item of taskArray; track $index) {

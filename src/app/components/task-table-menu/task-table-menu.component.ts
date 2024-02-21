@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,4 +10,10 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './task-table-menu.component.html',
   styleUrl: './task-table-menu.component.scss',
 })
-export class TaskTableMenuComponent {}
+export class TaskTableMenuComponent {
+  @Output() deleteMenu = new EventEmitter();
+
+  onDeleteMenu() {
+    this.deleteMenu.emit();
+  }
+}
