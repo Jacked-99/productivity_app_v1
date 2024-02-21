@@ -1,24 +1,30 @@
 <main class="app-main" cdkDropListGroup>
-  @for (taskData of tasks; track $index) {
-  <app-taks-table-column
-    [taskArray]="tasks[$index]"
-    [taskArrayID]="$index"
-    (drop)="drop($event)"
-  ></app-taks-table-column>
-  }
-  <button
-    type="button"
-    mat-raised-button
-    color="primary"
-    class="table-button"
-    (click)="addButtonClick()"
-  >
-    <mat-icon
-      aria-hidden="false"
-      aria-label="add-task"
-      fontIcon="add"
-    ></mat-icon>
-  </button>
+  <h1>Your task board</h1>
+  <div class="app-main-create-table">
+    <h2>Create new table</h2>
+    <button
+      type="button"
+      mat-raised-button
+      color="primary"
+      class="table-button"
+      (click)="addButtonClick()"
+    >
+      <mat-icon
+        aria-hidden="false"
+        aria-label="add-task"
+        fontIcon="add"
+      ></mat-icon>
+    </button>
+  </div>
+  <div class="app-main-table">
+    @for (taskData of tasks; track $index) {
+    <app-taks-table-column
+      [taskArray]="tasks[$index]"
+      [taskArrayID]="$index"
+      (drop)="drop($event)"
+    ></app-taks-table-column>
+    }
+  </div>
 </main>
 
 <router-outlet />

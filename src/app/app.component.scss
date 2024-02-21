@@ -1,6 +1,11 @@
 .app-main {
-  display: flex;
   margin: 1rem;
-  width: 90%;
-  justify-content: space-evenly;
+
+  .app-main-create-table {
+    display: block;
+  }
+  .app-main-table {
+    display: flex;
+    justify-content: space-evenly;
+  }
 }

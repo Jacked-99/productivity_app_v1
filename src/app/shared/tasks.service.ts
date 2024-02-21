@@ -54,4 +54,8 @@ export class TasksService {
 
     this.saveTasks();
   }
+  onArrayDelete(arrayID: number) {
+    this.taskArray.splice(arrayID, 1);
+    this.saveTasks();
+  }
 }
