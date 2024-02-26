@@ -4,6 +4,9 @@
   <mat-form-field class="task-dialog-form">
     <mat-label>Task</mat-label>
     <input matInput [(ngModel)]="data.title" [formControl]="title" />
+    @if (title.invalid) {
+    <mat-error>Please enter task title</mat-error>
+    }
   </mat-form-field>
   <p></p>
   <mat-form-field class="task-dialog-form">
@@ -17,6 +20,7 @@
     />
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
+    <mat-error>{{ getDateError() }}</mat-error>
   </mat-form-field>
   <p></p>
   <mat-form-field class="task-dialog-form">
@@ -58,6 +62,13 @@
   }
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button (click)="onNoclick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="onNoclick()">Cancel</button>
+  <button
+    mat-button
+    [mat-dialog-close]="data"
+    cdkFocusInitial
+    [disabled]="title.invalid || date.invalid"
+  >
+    Add
+  </button>
 </mat-dialog-actions>

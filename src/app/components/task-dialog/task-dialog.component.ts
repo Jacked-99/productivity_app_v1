@@ -58,27 +58,36 @@ export class TaskDialogComponent {
   title = new FormControl('', Validators.required);
   date = new FormControl('', Validators.required);
 
+  getDateError() {
+    if (this.date.hasError('required')) {
+      return 'Enter date';
+    }
+    return this.date.hasError('dirty') ? 'Invlaid date format' : '';
+  }
+
   onNoclick() {
     this.dialogRef.close();
   }
   addSubtaskClick() {
-    let subTaskData: Task = {
-      uid: '',
-      title: '',
-      completed: false,
-      date: this.data.date,
-    };
-    if (!this.subTaskCreate) {
-      this.subTaskCreate = true;
-    }
-    if (!this.data.subTasks) {
-      this.data.subTasks = [];
-    }
-    subTaskData.title = this.taskTitle;
-    subTaskData.uid = uuid();
+    if (this.date.valid && this.title.valid) {
+      let subTaskData: Task = {
+        uid: '',
+        title: '',
+        completed: false,
+        date: this.data.date,
+      };
+      if (!this.subTaskCreate) {
+        this.subTaskCreate = true;
+      }
+      if (!this.data.subTasks) {
+        this.data.subTasks = [];
+      }
+      subTaskData.title = this.taskTitle;
+      subTaskData.uid = uuid();
 
-    this.data.subTasks?.push(subTaskData);
-    console.log(this.data.subTasks);
-    this.taskTitle = '';
+      this.data.subTasks?.push(subTaskData);
+      console.log(this.data.subTasks);
+      this.taskTitle = '';
+    }
   }
 }
