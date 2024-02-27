@@ -39,7 +39,7 @@ export class TasksService {
     );
   }
   onDragTaskEvent(modifiedTaskArray: TaskTable[]) {
-    // this.taskArray = modifiedTaskArray;
+    this.taskArray = modifiedTaskArray;
     this.saveTasks();
   }
   onTaskModify(taksId: string, arrayID: number, completed: boolean) {
@@ -63,6 +63,10 @@ export class TasksService {
   }
   onArrayDelete(arrayID: number) {
     this.taskArray.splice(arrayID, 1);
+    this.saveTasks();
+  }
+  onArrayRename(arrayID: number, newName: string) {
+    this.taskArray[arrayID].name = newName;
     this.saveTasks();
   }
 }

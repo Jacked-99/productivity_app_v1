@@ -1,11 +1,11 @@
 <div class="column-rename">
   <mat-form-field>
-    <input type="text" matInput name="" id="" />
+    <input type="text" matInput name="" id="" [(ngModel)]="newName" />
   </mat-form-field>
   <div>
     <button mat-button type="button" color="warn" (click)="onCancelRename()">
       Cancel
     </button>
-    <button mat-button type="submit">Rename</button>
+    <button mat-button type="submit" (click)="onSubmitRename()">Rename</button>
   </div>
 </div>

@@ -10,7 +10,7 @@
       (renameDecision)="onRecvieRenameDecision($event)"
     ></app-task-column-rename>
     } @else {
-    <h2 class="task-table-title">placeholder</h2>
+    <h2 class="task-table-title">{{ taskArrayName }}</h2>
     <app-task-table-menu
       (editName)="onReciveTableRename()"
       (deleteMenu)="onReciveTableDelete()"

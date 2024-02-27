@@ -22,6 +22,7 @@
     <app-taks-table-column
       [taskArray]="tasks[$index].tasks"
       [taskArrayID]="$index"
+      [taskArrayName]="tasks[$index].name"
       (drop)="drop($event)"
     ></app-taks-table-column>
     }
