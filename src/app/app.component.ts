@@ -13,6 +13,7 @@ import { TaskMain } from './shared/task-main';
 import { TasksService } from './shared/tasks.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { TaskTable } from './shared/task-table';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class AppComponent implements OnInit {
   title = 'productivityApp';
-  tasks!: TaskMain[][];
+  tasks!: TaskTable[];
   constructor(private taskService: TasksService) {}
   ngOnInit(): void {
     this.taskService.loadTask();

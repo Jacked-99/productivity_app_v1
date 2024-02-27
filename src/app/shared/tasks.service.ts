@@ -1,26 +1,33 @@
 import { Injectable } from '@angular/core';
 import { TaskMain } from './task-main';
+import { TaskTable } from './task-table';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TasksService {
-  taskArray!: TaskMain[][];
+  taskArray!: TaskTable[];
 
   constructor() {}
 
   onTaskDelete(taksId: string, arrayID: number) {
-    this.taskArray[arrayID] = this.taskArray[arrayID].filter(
+    this.taskArray[arrayID].tasks = this.taskArray[arrayID].tasks.filter(
       (task) => task.uid != taksId
     );
     this.saveTasks();
   }
   onTaskAdd(task: TaskMain, arrayID: number) {
-    this.taskArray[arrayID].push(task);
+    this.taskArray[arrayID].tasks.push(task);
     this.saveTasks();
   }
   onAddTaskArray() {
-    this.taskArray.push([]);
+    let newIndex = this.taskArray.length;
+    let newTable: TaskTable = {
+      id: newIndex,
+      name: `Table ${newIndex + 1}`,
+      tasks: [],
+    };
+    this.taskArray.push(newTable);
     this.saveTasks();
   }
   saveTasks() {
@@ -31,20 +38,20 @@ export class TasksService {
       localStorage.getItem('tasks') || JSON.stringify([])
     );
   }
-  onDragTaskEvent(modifiedTaskArray: TaskMain[][]) {
-    this.taskArray = modifiedTaskArray;
+  onDragTaskEvent(modifiedTaskArray: TaskTable[]) {
+    // this.taskArray = modifiedTaskArray;
     this.saveTasks();
   }
   onTaskModify(taksId: string, arrayID: number, completed: boolean) {
     if (completed == true) {
-      this.taskArray[arrayID].forEach((task) => {
+      this.taskArray[arrayID].tasks.forEach((task) => {
         if (task.uid == taksId) {
           task.completed = true;
           task.subTasks?.forEach((t) => (t.completed = true));
         }
       });
     } else {
-      this.taskArray[arrayID].forEach((task) => {
+      this.taskArray[arrayID].tasks.forEach((task) => {
         if (task.uid == taksId) {
           task.completed = false;
           task.subTasks?.forEach((t) => (t.completed = false));
