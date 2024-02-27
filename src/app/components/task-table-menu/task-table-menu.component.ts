@@ -12,8 +12,12 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class TaskTableMenuComponent {
   @Output() deleteMenu = new EventEmitter();
+  @Output() editName = new EventEmitter();
 
   onDeleteMenu() {
     this.deleteMenu.emit();
+  }
+  onEditName() {
+    this.editName.emit();
   }
 }

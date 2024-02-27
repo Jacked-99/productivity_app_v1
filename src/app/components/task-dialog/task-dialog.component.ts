@@ -86,7 +86,6 @@ export class TaskDialogComponent {
       subTaskData.uid = uuid();
 
       this.data.subTasks?.push(subTaskData);
-      console.log(this.data.subTasks);
       this.taskTitle = '';
     }
   }

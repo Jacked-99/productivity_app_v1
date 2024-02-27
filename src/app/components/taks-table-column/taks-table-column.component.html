@@ -5,10 +5,17 @@
   (cdkDropListDropped)="onDropElement($event)"
 >
   <div class="task-table-head">
+    @if (editing) {
+    <app-task-column-rename
+      (renameDecision)="onRecvieRenameDecision($event)"
+    ></app-task-column-rename>
+    } @else {
     <h2 class="task-table-title">placeholder</h2>
     <app-task-table-menu
+      (editName)="onReciveTableRename()"
       (deleteMenu)="onReciveTableDelete()"
     ></app-task-table-menu>
+    }
   </div>
 
   @for (item of taskArray; track $index) {

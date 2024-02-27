@@ -2,6 +2,7 @@
 @import "@angular/material/prebuilt-themes/purple-green.css";
 
 .task-table {
+  min-width: 15rem;
   max-width: 20rem;
   display: flex;
   flex-direction: column;

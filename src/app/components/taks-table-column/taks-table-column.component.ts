@@ -7,6 +7,7 @@ import { Task } from '../../shared/task';
 import { DragDropModule, CdkDragDrop } from '@angular/cdk/drag-drop';
 import { TasksService } from '../../shared/tasks.service';
 import { TaskTableMenuComponent } from '../task-table-menu/task-table-menu.component';
+import { TaskColumnRenameComponent } from '../task-column-rename/task-column-rename.component';
 
 @Component({
   selector: 'app-taks-table-column',
@@ -18,6 +19,7 @@ import { TaskTableMenuComponent } from '../task-table-menu/task-table-menu.compo
     TaskDialogComponent,
     DragDropModule,
     TaskTableMenuComponent,
+    TaskColumnRenameComponent,
   ],
   templateUrl: './taks-table-column.component.html',
   styleUrl: './taks-table-column.component.scss',
@@ -26,6 +28,7 @@ export class TaksTableColumnComponent {
   @Input() taskArray!: Task[];
   @Input() taskArrayID!: number;
   @Output() drop = new EventEmitter();
+  editing = false;
   constructor(private taskService: TasksService) {}
   onAddTaskEmit(task: Task) {
     this.taskService.onTaskAdd(task, this.taskArrayID);
@@ -38,5 +41,14 @@ export class TaksTableColumnComponent {
   }
   onReciveTableDelete() {
     this.taskService.onArrayDelete(this.taskArrayID);
+  }
+  onReciveTableRename() {
+    this.editing = true;
+  }
+  onRecvieRenameDecision(rename: boolean) {
+    if (rename) {
+      ///metoda do zmiany nazwy tabeli
+    }
+    this.editing = false;
   }
 }
