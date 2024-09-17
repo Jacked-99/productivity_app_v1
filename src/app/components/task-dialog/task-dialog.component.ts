@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialogRef,
@@ -25,6 +25,9 @@ import { Task } from '../../shared/task';
 
 import { MatListModule } from '@angular/material/list';
 import { v4 as uuid } from 'uuid';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-task-dialog',
@@ -47,12 +50,15 @@ import { v4 as uuid } from 'uuid';
   templateUrl: './task-dialog.component.html',
   styleUrl: './task-dialog.component.scss',
 })
-export class TaskDialogComponent {
+export class TaskDialogComponent implements OnInit {
   taskTitle = '';
   subTaskCreate = false;
+  isSmallScreen = false;
   constructor(
     public dialogRef: MatDialogRef<TaskDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: TaskMain
+    @Inject(MAT_DIALOG_DATA) public data: TaskMain,
+    private breakpointObs: BreakpointObserver,
+    private destroyRef: DestroyRef
   ) {}
 
   title = new FormControl('', Validators.required);
@@ -88,5 +94,13 @@ export class TaskDialogComponent {
       this.data.subTasks?.push(subTaskData);
       this.taskTitle = '';
     }
+  }
+  ngOnInit(): void {
+    this.breakpointObs
+      .observe(Breakpoints.Small)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((result) => {
+        result.matches = this.isSmallScreen;
+      });
   }
 }

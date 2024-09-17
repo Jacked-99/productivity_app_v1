@@ -1,27 +1,27 @@
-# ProductivityApp
+# Tasku
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2.
+# Table of Contents
 
-## Development server
+- [Introduction](#introduction)
+- [Build With](#build-with)
+- [Features](#features)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Introduction
 
-## Code scaffolding
+Welcome!
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Tasku is my porductivity application, it was made mainly for myself. It has in my opinion all nessesecry features that I wanted to implement. Its not super complex but it gets the job done
 
-## Build
+## Build With
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- [Angular CLI](https://github.com/angular/angular-cli) version 17.1.1
+- [RxJS](https://rxjs.dev/) Essential
+- [Angular Material](https://material.angular.io/) for styling and components
 
-## Running unit tests
+## Features
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Ability to create and edit task boards,
+- Ability to crate tasks, with date and subtasks,
+- Tasks can be dragged to other tables,
+- Automaticlly remove finished tasks,
+- Tasks are saved in local storage of the browser.
