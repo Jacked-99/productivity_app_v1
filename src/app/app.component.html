@@ -17,7 +17,7 @@
       Create new table
     </button>
   </div>
-  <div [class]="isSmallLayout ? 'app-main-table' : 'app-main-table-small'">
+  <div [class]="isSmallLayout ? 'app-main-table-small' : 'app-main-table'">
     @for (taskData of tasks; track $index) {
     <app-taks-table-column
       [taskArray]="tasks[$index].tasks"

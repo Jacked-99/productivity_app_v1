@@ -97,7 +97,7 @@ export class TaskDialogComponent implements OnInit {
   }
   ngOnInit(): void {
     this.breakpointObs
-      .observe(Breakpoints.Small)
+      .observe(Breakpoints.Handset)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((result) => {
         result.matches = this.isSmallScreen;

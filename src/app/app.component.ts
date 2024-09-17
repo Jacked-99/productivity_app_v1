@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
     this.taskService.loadTask();
     this.tasks = this.taskService.taskArray;
     this.breakpointObs
-      .observe(Breakpoints.Small)
+      .observe(Breakpoints.Handset)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((result) => {
         result.matches
