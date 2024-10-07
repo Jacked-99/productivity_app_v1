@@ -1,0 +1,48 @@
+<mat-card class="task-table">
+  <mat-accordion multi>
+    <mat-expansion-panel
+      [disabled]="disableTask"
+      (opened)="openedTask = true"
+      [expanded]="openedTask && !disableTask"
+    >
+      <mat-expansion-panel-header class="task-header">
+        <mat-panel-title>
+          <mat-checkbox
+            color="primary"
+            [checked]="disableTask"
+            (change)="completeAll()"
+          ></mat-checkbox
+          >{{ taskData.title }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <h3>Date</h3>
+      <p>{{ taskData.date.toString() | titlecase }}</p>
+      <mat-divider></mat-divider>
+      <h3>Details</h3>
+      <p>{{ taskData.desc }}</p>
+      <mat-divider></mat-divider>
+      <h3>Sub tasks</h3>
+      <mat-list>
+        @for (task of taskData.subTasks; track $index) {
+        <mat-list-item>
+          <mat-checkbox [(ngModel)]="task.completed">{{
+            task.title
+          }}</mat-checkbox>
+        </mat-list-item>
+
+        }
+      </mat-list>
+      <mat-divider></mat-divider>
+
+      <button
+        class="task-button"
+        type="button"
+        mat-raised-button
+        color="warn"
+        (click)="onDeleteClick()"
+      >
+        Delete
+      </button>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card>

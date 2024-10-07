@@ -1,0 +1,13 @@
+.app-main {
+  margin: 1rem;
+
+  .app-main-create-table {
+    display: block;
+  }
+  .app-main-table {
+    display: flex;
+  }
+  .app-main-table-small {
+    display: grid;
+  }
+}

@@ -1,0 +1,78 @@
+<h2 mat-dialog-title>Add new task</h2>
+<mat-dialog-content
+  [class]="
+    isSmallScreen ? 'taks-dialog-content-small ' : 'taks-dialog-content '
+  "
+>
+  <p></p>
+  <mat-form-field class="task-dialog-form">
+    <mat-label>Task</mat-label>
+    <input matInput [(ngModel)]="data.title" [formControl]="title" />
+    @if (title.invalid) {
+    <mat-error>Please enter task title</mat-error>
+    }
+  </mat-form-field>
+  <p></p>
+  <mat-form-field class="task-dialog-form">
+    <mat-label>Date</mat-label>
+    <input
+      [formControl]="date"
+      matInput
+      [matDatepicker]="picker"
+      [(ngModel)]="data.date"
+      placeholder="MM/DD/YYYY"
+    />
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error>{{ getDateError() }}</mat-error>
+  </mat-form-field>
+  <p></p>
+  <mat-form-field class="task-dialog-form">
+    <mat-label> Task details </mat-label>
+    <textarea
+      matInput
+      name=""
+      id=""
+      cols="30"
+      rows="5"
+      [(ngModel)]="data.desc"
+    ></textarea>
+  </mat-form-field>
+  <mat-form-field class="task-dialog-form">
+    <mat-label>Add subtask</mat-label>
+    <input matInput type="text" [(ngModel)]="taskTitle" />
+  </mat-form-field>
+  <button
+    type="button"
+    mat-raised-button
+    color="primary"
+    class="task-dialog-form"
+    (click)="addSubtaskClick()"
+  >
+    <mat-icon
+      aria-hidden="false"
+      aria-label="add-task"
+      fontIcon="add"
+    ></mat-icon>
+  </button>
+  @if (subTaskCreate == true) {
+  <h3>Subtasks:</h3>
+  <mat-list role="link">
+    @for (item of data.subTasks; track $index) {
+    <mat-list-item role="listitem">{{ item.title }}</mat-list-item>
+    }
+  </mat-list>
+
+  }
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoclick()">Cancel</button>
+  <button
+    mat-button
+    [mat-dialog-close]="data"
+    cdkFocusInitial
+    [disabled]="title.invalid || date.invalid"
+  >
+    Add
+  </button>
+</mat-dialog-actions>
